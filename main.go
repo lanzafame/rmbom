@@ -2,19 +2,16 @@ package main
 
 import (
 	"bytes"
-	"flag"
 	"io/ioutil"
 	"log"
+	"os"
 )
 
 func main() {
-	var (
-		i = flag.String("i", "", "The input file.")
-	)
-
-	flag.Parse()
-
-	fb, err := ioutil.ReadFile(*i)
+	if os.Args[1] == "" {
+		log.Fatalln("please provide file path")
+	}
+	fb, err := ioutil.ReadFile()
 	if err != nil {
 		log.Fatalf("failed to read file: %v", err)
 	}
